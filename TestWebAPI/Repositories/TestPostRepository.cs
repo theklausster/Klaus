@@ -19,7 +19,7 @@ namespace TestWebAPI.Repositories
         [SetUp]
         public void SetUp()
         {
-            //ResetDB();
+            ResetDB();
             postRepo = new PostRepository();
 
         }
