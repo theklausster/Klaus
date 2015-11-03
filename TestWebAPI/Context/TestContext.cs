@@ -29,7 +29,7 @@ namespace TestWebAPI.Context
         public void Test_database_connection_in_db_context()
         {
             
-            List<Post> list = db.Posts.ToList();
+            List<PostContent> list = db.Posts.ToList();
             Assert.IsNotNull(list);
         }
 

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DAL.Entities.PostContent>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <table>
+        <tr>
+            <td>
+                Id
+            </td>
+            <td>
+                Title
+            </td>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Title</td>
+                <td> | @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |</td>
+                <td> @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |</td>
+                 
+            </tr>
+          
+        }
+
+    </table>
+    
+  
+</div>
+<p>
+    | @Html.ActionLink("Create new Post", "Create") |
+    @Html.ActionLink("Back to List", "Index") |
+</p>

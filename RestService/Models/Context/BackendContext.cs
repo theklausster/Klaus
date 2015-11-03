@@ -11,6 +11,6 @@ namespace DAL.Context
             Database.SetInitializer(new DBInitializer()); 
         }
 
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<PostContent> Posts { get; set; }
     }
 }

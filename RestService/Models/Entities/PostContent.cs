@@ -2,9 +2,9 @@
 
 namespace DAL.Entities
 {
-    public class Post
+    public class PostContent
     {
-        public Post()
+        public PostContent()
         {
 
         }

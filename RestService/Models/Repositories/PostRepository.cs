@@ -7,16 +7,16 @@ using System.Linq;
 
 namespace DAL.Repository
 {
-    public class PostRepository : IRepository<Post>
+    public class PostRepository : IRepository<PostContent>
     {
 
 
 
-        public Post CreateEntity(Post t)
+        public PostContent CreateEntity(PostContent t)
         {
             using (var db = new BackendContext())
             { 
-                Post createdPost = db.Posts.Add(t);
+                PostContent createdPost = db.Posts.Add(t);
                 db.SaveChanges();
                 return createdPost;
             }
@@ -26,7 +26,7 @@ namespace DAL.Repository
         {
             using (var db = new BackendContext())
             {
-                Post p = db.Posts.FirstOrDefault(a => a.Id == id);
+                PostContent p = db.Posts.FirstOrDefault(a => a.Id == id);
                 if (p != null)
                 {
                     db.Posts.Remove(p);
@@ -41,7 +41,7 @@ namespace DAL.Repository
            
         }
 
-        public List<Post> ReadAllEntities()
+        public List<PostContent> ReadAllEntities()
         {
             using (var db = new BackendContext())
             {
@@ -49,11 +49,11 @@ namespace DAL.Repository
             }
         }
 
-        public Post ReadEntity(int id)
+        public PostContent ReadEntity(int id)
         {
             using (var db = new BackendContext())
             {
-                Post post = db.Posts.FirstOrDefault(a => a.Id == id);
+                PostContent post = db.Posts.FirstOrDefault(a => a.Id == id);
                 if (post != null)
                 {
                     return post;
@@ -65,11 +65,11 @@ namespace DAL.Repository
             }
         }
 
-        public void UpdateEntity(Post t)
+        public void UpdateEntity(PostContent t)
         {
             using (var db = new BackendContext())
             {
-                Post p = db.Posts.FirstOrDefault(a => a.Id == t.Id);
+                PostContent p = db.Posts.FirstOrDefault(a => a.Id == t.Id);
                 p.ImageUrl = t.ImageUrl;
                 p.Title = t.Title;
                 p.Description = t.Description;

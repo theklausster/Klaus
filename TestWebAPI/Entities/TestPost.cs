@@ -12,11 +12,11 @@ namespace TestWebAPI.Entities
     [TestFixture]
     class TestPost
     {
-        Post post;
+        PostContent post;
         [SetUp]
         public void SetUp()
         {
-            post = new Post();
+            post = new PostContent();
         } 
 
         [TearDown]

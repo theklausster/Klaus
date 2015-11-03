@@ -14,12 +14,12 @@ namespace TestWebAPI.Repositories
     [TestFixture]
     class TestPostRepository
     {
-        IRepository<Post> postRepo;
+        IRepository<PostContent> postRepo;
 
         [SetUp]
         public void SetUp()
         {
-            ResetDB();
+            //ResetDB();
             postRepo = new PostRepository();
 
         }
@@ -33,7 +33,7 @@ namespace TestWebAPI.Repositories
         [Test]
         public void Test_if_read_by_id_works()
         {
-            Post post = postRepo.ReadEntity(1);
+            PostContent post = postRepo.ReadEntity(1);
             Assert.NotNull(post);
         }
 
@@ -41,13 +41,13 @@ namespace TestWebAPI.Repositories
         [ExpectedException(typeof(ArgumentException))]
         public void Test_if_read_by_id_is_null()
         {
-            Post post = postRepo.ReadEntity(-1);
+            PostContent post = postRepo.ReadEntity(-1);
         }
 
         [Test]
         public void Test_if_get_all_posts_works()
         {
-            List<Post> posts = postRepo.ReadAllEntities();
+            List<PostContent> posts = postRepo.ReadAllEntities();
             Assert.NotNull(posts);
         }
 
@@ -57,7 +57,7 @@ namespace TestWebAPI.Repositories
         {
             int id = 1;
             postRepo.DeleteEntity(id);
-            Post deletedPost = postRepo.ReadEntity(id);
+            PostContent deletedPost = postRepo.ReadEntity(id);
             Assert.Null(deletedPost);
         }
 
@@ -72,8 +72,8 @@ namespace TestWebAPI.Repositories
         [Test]
         public void Test_if_create_post_works()
         {
-            Post p = new Post() { Description = "Hello World", ImageUrl = "imgurl", Title = "Im a Test post" };
-            Post createdPost = postRepo.CreateEntity(p);
+            PostContent p = new PostContent() { Description = "Hello World", ImageUrl = "imgurl", Title = "Im a Test post" };
+            PostContent createdPost = postRepo.CreateEntity(p);
             Assert.Greater(createdPost.Id, 0);
 
         }
@@ -81,7 +81,7 @@ namespace TestWebAPI.Repositories
         [Test]
         public void Test_if_update_post_works()
         {
-            Post p = postRepo.ReadEntity(1);
+            PostContent p = postRepo.ReadEntity(1);
             string title = "loool";
             p.Title = title;
             postRepo.UpdateEntity(p);
